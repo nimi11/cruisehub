@@ -39,10 +39,10 @@ Error Handling: Error messages are displayed to users in case of validation erro
 File Uploads: Users can upload pictures of their cars during the listing process. Uploaded files are stored securely on the server.
 
 # Contributors
-#Benjamin Teye Nartey
-#Toluwanimi Sonuga
-#Samson Oderinwale
-#Oluwadamilola Odeboje
+## Benjamin Teye Nartey
+## Toluwanimi Sonuga
+## Samson Oderinwale
+## Oluwadamilola Odeboje
 
 # License
 This project is not licensed.
