@@ -320,14 +320,14 @@ def update_status(owner_id,car_id):
 @app.route('/owner/reservations/<int:owner_id>')
 def show_reservation(owner_id):
     if 'user_id' in session and owner_id ==  session['user_id']:
-        user = Owner.query.get(session['user_id'])
+        owner = Owner.query.get(session['user_id'])
         reservations = Reservations.query.filter_by(owner_id=owner_id).all()
         reserved_cars = []
         for reservation in reservations:
             car = Car.query.get(reservation.reserved_car_id)
             user = User.query.get(reservation.user_id)
             reserved_cars.append((reservation, car,user))
-        return render_template("show_reservations.html", reservations=reservations, reserved_cars=reserved_cars, user=user) 
+        return render_template("show_reservations.html", reservations=reservations, reserved_cars=reserved_cars, user=user, owner = owner) 
     return redirect(url_for('login'))
 
 #An email should be sent to the owner when reservation is made
@@ -463,6 +463,10 @@ def remove_car(owner_id, car_id):
             flash("Car cannot be removed from marketplace because it has been reserved", 'remove_car')
 
     return redirect(url_for('login'))
+
+@app.route('/forgot_password', methods = ['POST', 'GET'])
+def forgot_password():
+    return render_template('forgot_password.html')
 
 @app.route('/submit_token', methods=['GET', 'POST'])
 def submit_token():
